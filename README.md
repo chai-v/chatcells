@@ -4,6 +4,10 @@
 
 This project is a dashboard that collects bank details of a user built in react.
 
+## View Application
+
+View the live application at [https://chatcells-eight.vercel.app/](https://chatcells-eight.vercel.app/)
+
 ## Project Structure
 
 The project consists of several components organized into different directories:
@@ -32,8 +36,3 @@ Once you have installed the dependencies, you can run the application locally:
 `npm run dev`
 
 This will start the development server and open the application in your default web browser. 
-
-## View Application
-
-View the live application at [https://chatcells-eight.vercel.app/](https://chatcells-eight.vercel.app/)
-

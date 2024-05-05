@@ -21,7 +21,7 @@ export const Header = () => {
             <div className='h-8'>
                 <h1>Logo</h1>
             </div>
-            <nav className='w-1/3 h-8 flex flex-wrap flex-row justify-between gap-6'>
+            <nav className='w-2/3 h-8 flex flex-wrap flex-row justify-between gap-4'>
                 {/* Map through navItems array to render navigation links */}
                 {navItems.map((item, index) => (
                     <div key={index} className={`${

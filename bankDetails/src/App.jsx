@@ -38,7 +38,7 @@ function App() {
     <>
     <div>
       {/* Conditional rendering of different headers based on width of the screen */}
-      <div className={`${isMobile && "sticky top-0"} w-full h-auto over`}>
+      <div className={`${isMobile && "sticky top-0"} w-full`}>
         {isMobile ? <MobileHeader toggleOpen={setOpen}/> : <Header/>}
       </div>
       {/* Conditional rendering to ensure Sidebar is above the Outlet component in mobile when menu button is clicked */}
@@ -51,9 +51,9 @@ function App() {
         </div>
       :
       // Flex used to ensure Sidebar and Outlet horizontally share the screen width
-      <div className='w-full h-auto flex flex-row overflow-y-hidden no-scrollbar'>
+      <div className='w-full h-[91vh] flex flex-row overflow-y-hidden no-scrollbar'>
         <Sidebar mobile={isMobile} isopen={isOpen} toggleOpen={setOpen}/>
-        <div className="overflow-y-auto">
+        <div className=" bottom-0 overflow-y-auto">
           <Outlet/>
         </div>
     </div>

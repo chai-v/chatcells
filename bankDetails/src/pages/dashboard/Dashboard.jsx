@@ -8,7 +8,11 @@ import React from "react";
 export const Dashboard = ({}) => {
     return(
         <>
-            <h1>Dashboard</h1>
+            <div className="p-4">
+                <h1 className="font-bold text-lg">
+                    Dashboard
+                </h1>
+            </div>
         </>
     )
 }

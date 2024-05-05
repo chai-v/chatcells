@@ -8,7 +8,11 @@ import React from "react";
 export const Home = ({}) => {
     return(
         <>
-            <h1>Home</h1>
+            <div className="p-4">
+                <h1 className="font-bold text-lg">
+                    Home
+                </h1>
+            </div>
         </>
     )
 }

@@ -8,7 +8,11 @@ import React from "react";
 export const Links = ({}) => {
     return(
         <>
-            <h1>TOTM Links</h1>
+            <div className="p-4">
+                <h1 className="font-bold text-lg">
+                    TOTM Links
+                </h1>
+            </div>
         </>
     )
 }

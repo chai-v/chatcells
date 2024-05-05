@@ -8,7 +8,11 @@ import React from "react";
 export const Summary = ({}) => {
     return(
         <>
-            <h1>Daily Summary</h1>
+            <div className="p-4">
+                <h1 className="font-bold text-lg">
+                    Summary
+                </h1>
+            </div>
         </>
     )
 }

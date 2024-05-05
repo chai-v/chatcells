@@ -41,7 +41,9 @@ export const Sidebar = ({mobile, isopen, toggleOpen}) => {
         <>
            <div
                 id="sidebar"
-                className={`sticky left-0 flex flex-col z-40 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 overflow-y-hidden lg:overflow-y-hidden no-scrollbar bg-white lg:sidebar-expanded:w-20 shrink-0 border-r border-gray-200 sm:translate-x-0 p-4 transition-all ease-in-out duration-700 w-fit`}
+                className={`flex flex-col z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 lg:overflow-y-hidden no-scrollbar bg-white shrink-0 border-r border-gray-200 p-4 transition-all duration-300 ${
+                    (sidebarExpanded) ? ((mobile) ? "w-full" : "w-fit") : ((mobile) ? "" : "w-20")
+                }`}
             >
                 <div className="space-y-4">
                     {/* Toggles expanded local state to open and close the sidebar on large screen devices  */}

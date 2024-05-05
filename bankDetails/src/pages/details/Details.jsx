@@ -1,6 +1,13 @@
 import React, {useState, useEffect} from "react";
 
-export const Details = ({mobile}) => {
+/**
+ * Details component renders a form to update bank details.
+ * @param {Object} props - Component props.
+ * @returns {JSX.Element} Details component.
+ */
+
+export const Details = () => {
+    // State variable to manage form data
     const [formData, setFormData] = useState({
         accountHolderName: "",
         accountNumber: "",
@@ -11,9 +18,13 @@ export const Details = ({mobile}) => {
         relation: "",
     });
     
+    // State variable to manage mobile view
     const [isMobile, setIsMobile] = useState(true);
+    
+    // State variable to store the time at which the form was submitted
     const [lastFilled, setLastFilled] = useState();
 
+    // Form inputs configuration
     const formInputs = [
         { label: "ACCOUNT HOLDER NAME", name: "accountHolderName", type: "text" },
         { label: "ACCOUNT NUMBER", name: "accountNumber", type: "text" },
@@ -24,12 +35,15 @@ export const Details = ({mobile}) => {
         { label: "RELATION WITH ACCOUNT HOLDER", name: "relation", type: "text" },
     ];
     
+    // State variable to manage form submission. Used to toggle the form from edit mode to view mode
     const [submit, setsubmit] = useState(false);
 
+    // Function to handle form input change
     const handleChange = (event) => {
         setFormData({ ...formData, [event.target.name]: event.target.value });
     };
     
+    // Function to handle form submission. Sets local submit state to true and sets submission time
     const handleSubmit = (event) => {
         event.preventDefault();
         setsubmit(true);
@@ -38,6 +52,7 @@ export const Details = ({mobile}) => {
         setLastFilled(currentTime);
     };
 
+    // Effect to check and update the mobile view state
     useEffect(() => {
         const handleResize = () => {
           setIsMobile(window.innerWidth <= 600);
@@ -54,12 +69,13 @@ export const Details = ({mobile}) => {
 
     return(
         <>
-            <div className={`flex flex-col ${mobile && "ml-4"} p-8`}>
+            <div className={`flex flex-col ${isMobile && "ml-4"} p-8`}>
                 <h1 className="text-3xl font-semibold mb">Update Bank Details</h1>
                 <p className={`mt-2 ${isMobile ? 'w-full' : 'w-4/5'} text-sm mb-6`}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in tortor sit amet sapien accumsan accumsan. Donec consectetur, velit in mattis fermentum, velit arcu accumsan turpis, at vestibulum magna dui sed ante. </p>
                 <div className={`${isMobile ? 'w-full' : 'w-4/5'} border border-slate-400 rounded-md p-6`}>
                     <form>
                         <div className={`w-full ${!isMobile && "grid grid-cols-2"} gap-4`}>
+                        {/* Map through formInputs array to render form label and input tags within the form grid */}
                         {formInputs.map((input, index) => (
                                 <React.Fragment key={index}>
                                     <div className={`flex items-center col-span-1 ${isMobile && "mb"}`}>
@@ -73,6 +89,7 @@ export const Details = ({mobile}) => {
                                             className={`appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight ${submit ? 'bg-green-100' : ''} ${isMobile && 'text-xs'} focus:outline-none focus:bg-white focus:border-gray-800`}
                                             type={input.type}
                                             placeholder={input.label}
+                                            // Sets the value of the input field to state after submit button clicked
                                             {...(submit ? { value: formData[input.name] } : {})}
                                         ></input>
                                     </div>
@@ -84,6 +101,7 @@ export const Details = ({mobile}) => {
                             <div className={`flex ${submit ? 'flex-col' : 'flex-row'} items-start col-span-1 w-full appearance-none border-2 border-gray-200 rounded  text-gray-700 p-4 ${submit ? 'bg-green-100': ''} ${isMobile ? 'mb-2' : ''} focus:outline-none focus:bg-white focus:border-gray-800`}>
                                 {!submit && <input className="w-8 h-8 mr-4" type="checkbox"></input>}
                                 <p className={`${isMobile ? 'text-sm' : 'text-xs'}`}>Lorem ipsum dolor sit amet consectetur. Cum pellentesque pharetra nam tellus vitae mauris eget. Sit netus ac risus dolor eros iaculis. Elementum senectus morbi arcu.</p>
+                                {/* If lastFilled state is updated after submission, conditionally render the date the details were updated */}
                                 {lastFilled && <p className="font-bold mt-2">FILLED&nbsp;ON&nbsp;
                                         {lastFilled.toLocaleString('en-US', {
                                             month: 'short',

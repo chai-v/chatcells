@@ -10,6 +10,8 @@ import { Summary } from './pages/summary/Summary.jsx'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
+// Created a browser router with route configuration. Side menu screens nested as child paths of the parent path "/" 
+// to make sure of <Outlet/> for child components within the layout defined in App.jsx
 const router = createBrowserRouter([
   {
     path: "/",

@@ -1,11 +1,20 @@
 import React, {useState} from "react";
 
+/**
+ * MobileHeader component displays the header for mobile view.
+ * @param {Object} props - Component props.
+ * @param {Function} props.toggleOpen - Function to toggle the sidebar open/close state. Used to update state of parent component App.jsx
+ * @returns {JSX.Element} MobileHeader component.
+ */
+
 export const MobileHeader = ({toggleOpen}) => {
+  // State variable to manage the sidebar open/close state
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
+  // Function to handle opening/closing of the sidebar
   const handleOpen = () =>{
-    toggleOpen(!sidebarOpen);
-    setSidebarOpen(!sidebarOpen);
+    toggleOpen(!sidebarOpen); // Toggle the sidebar open/close state of App.jsx using the provided toggleOpen function
+    setSidebarOpen(!sidebarOpen); // Toggle the local sidebarOpen state
   }
 
   return (
@@ -15,8 +24,7 @@ export const MobileHeader = ({toggleOpen}) => {
           <div className="flex">
             <button
               className="text-slate-500 hover:text-slate-600 lg:hidden"
-              // aria-controls="sidebar"
-              // aria-expanded={sidebarOpen}
+              // Call handleOpen function when the button is clicked
               onClick={handleOpen}
             >
               <span className="sr-only">Open sidebar</span>

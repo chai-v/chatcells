@@ -26,13 +26,14 @@ To run this project locally, follow these steps:
 3. Install dependencies:
 `npm install`
 
-## View Application
-
-View the live application at [https://chatcells-eight.vercel.app/](https://chatcells-eight.vercel.app/)
 ## Running the Application
 
 Once you have installed the dependencies, you can run the application locally:
 `npm run dev`
 
 This will start the development server and open the application in your default web browser. 
+
+## View Application
+
+View the live application at [https://chatcells-eight.vercel.app/](https://chatcells-eight.vercel.app/)
 

@@ -41,7 +41,7 @@ export const Sidebar = ({mobile, isopen, toggleOpen}) => {
         <>
            <div
                 id="sidebar"
-                className={`flex flex-col z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 lg:overflow-y-hidden no-scrollbar bg-white shrink-0 border-r border-gray-200 p-4 transition-all duration-300 ${
+                className={`h-full flex flex-col z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 lg:overflow-y-hidden no-scrollbar bg-white shrink-0 border-r border-gray-200 p-4 transition-all duration-300 ${
                     (sidebarExpanded) ? ((mobile) ? "w-full" : "w-fit") : ((mobile) ? "" : "w-20")
                 }`}
             >

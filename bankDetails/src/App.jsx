@@ -36,29 +36,34 @@ function App() {
 
   return (
     <>
-    <div>
+    <div className="flex flex-col h-screen overflow-hidden">
       {/* Conditional rendering of different headers based on width of the screen */}
-      <div className={`${isMobile && "sticky top-0"} w-full`}>
-        {isMobile ? <MobileHeader toggleOpen={setOpen}/> : <Header/>}
+      <div className={`sticky top-0 w-full z-10 bg-white`}>
+        {isMobile ? <MobileHeader toggleOpen={setOpen} /> : <Header />}
       </div>
-      {/* Conditional rendering to ensure Sidebar is above the Outlet component in mobile when menu button is clicked */}
-      { isMobile ?
-        <div className='w-full h-auto flex flex-row'>
-          {(isOpen) ?
-            <Sidebar mobile={isMobile} isopen={isOpen} toggleOpen={setOpen}/> :
-            <Outlet mobile={isMobile}/>
-          }
-        </div>
-      :
-      // Flex used to ensure Sidebar and Outlet horizontally share the screen width
-      <div className='w-full h-[91vh] flex flex-row overflow-y-hidden no-scrollbar'>
-        <Sidebar mobile={isMobile} isopen={isOpen} toggleOpen={setOpen}/>
-        <div className=" bottom-0 overflow-y-auto">
-          <Outlet/>
-        </div>
+      <div className="flex flex-1 overflow-hidden">
+        {/* Conditional rendering to ensure Sidebar is above the Outlet component in mobile when menu button is clicked */}
+        {isMobile ? (
+          <div className="flex w-full h-full">
+            {isOpen ? (
+              <Sidebar mobile={isMobile} isopen={isOpen} toggleOpen={setOpen} />
+            ) : (
+              <div className="flex-1 overflow-y-auto">
+                <Outlet />
+              </div>
+            )}
+          </div>
+        ) : (
+          // Flex used to ensure Sidebar and Outlet horizontally share the screen width
+          <div className="flex w-full h-full">
+            <Sidebar mobile={isMobile} isopen={isOpen} toggleOpen={setOpen} />
+            <div className="flex-1 overflow-y-auto p-4">
+              <Outlet />
+            </div>
+          </div>
+        )}
+      </div>
     </div>
-      } 
-      </div>
     </>
   )
 }
